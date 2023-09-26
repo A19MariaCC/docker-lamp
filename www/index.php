@@ -9,6 +9,8 @@
         <div class="container-fluid">
             <?php
                 echo "<h1>¡Hola, Bienvenido al módulo de DWCS!</h1>";
+                echo "<p>Esta es la primera tarea de DWCS</p>";
+                
             ?>
         </div>
     </body>
