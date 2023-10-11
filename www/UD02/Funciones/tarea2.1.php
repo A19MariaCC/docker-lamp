@@ -40,10 +40,10 @@ function potencia($a, $b){
         return "El resultado de $a elvado a $b es:".pow($a,$b);
     }else{
         return "Los parámetros introducidos no son válidos pues no son valores numéricos";
-    }
-
-    echo potencia(4,3); //Invocamos a la función
+    }  
 }
+echo potencia(4,3); //Invocamos a la función
+
 //4. Crea una función que reciba un carácter e devolva true se o carácter é unha vogal.
 function esVocal($car){
     $vocal = ["A", "E", "I", "O", "U"];
