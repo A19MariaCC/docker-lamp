@@ -1,0 +1,19 @@
+*,
+*::after,
+::before {
+    box-sizing: border-box;
+}
+
+h2{
+    text-align: center;
+    color: blue;
+}
+.central{
+    padding: 1rem;
+    width: 40%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
