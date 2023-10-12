@@ -34,7 +34,7 @@ function notacionHora($hora){
 } 
    
 //Llamamos a la función
-echo notacionHora("11:05");
+echo notacionHora("13:05");
 
 
 ?>
