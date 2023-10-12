@@ -22,7 +22,7 @@
 	<?php 
 		/* Ahora incluimos la librería en la que establecemos el menú de nuestro sitio
 		web */
-		include("../template/librerias/menu.php"); // Ruta a la que debemos mirar para mostrar la web
+		include("../template/librerias/menu.php"); 
 		menu(); // Llamamos a la función menu definida en el archivo menu.php 
 		?>
 	</div>
@@ -46,14 +46,14 @@
 				<div id="content">
 					<?php 
 					// Añadimos la función del contenido en esta posición de la web
-					// Para lo que utilizamos un include para añadi la función.
+					// Para lo que utilizamos un include para añadir la función.
 					include("../template/librerias/content.php");
 						content(); // Llamada a la función content() definida en el archivo content.php 
 					?>
 				</div>
 				
 				<div id="sidebar">
-					<?php 
+					<?php
 					// Añadimos el archivo sidebar.php para que lo muestre en la situación
 					// especifica, que en este caso es la barra lateral de nuestro sitio web
 					// Al igual que en el anterior apartado llamamos a la función definida en
@@ -75,7 +75,8 @@
 	// Como en las anteriores ocasiones, debemos llamar a la función definida en ese archivo
 	// footer.php
 	include("../template/librerias/footer.php");
-		pie(); // Llamada a la función pie() definida en el archivo footer.php ?>
+		pie(); // Llamada a la función pie() definida en el archivo footer.php
+?>
 </div>
 
 </body>
