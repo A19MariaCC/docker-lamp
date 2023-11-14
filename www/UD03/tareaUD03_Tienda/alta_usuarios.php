@@ -40,7 +40,7 @@
     </script>
 
     <p>Formulario de alta</p>
-    <!-- o "action" chama a dar_de_alta.php de xeito reflexivo-->
+    <!--o "action" chama a dar_de_alta.php de xeito reflexivo-->
     <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <p><label for="nombre">Nombre: </label>
             <input type="text" placeholder="Nombre" aria-label="Nombre" name="nombre"></p>
