@@ -11,6 +11,7 @@
 <body>
     <?php
         include("lib/base_datos.php");
+        //Obtener conexión
         $conexion = get_conexion();
         //crear_bd_tienda($conexion);
         crear_bd_tienda($conexion);
