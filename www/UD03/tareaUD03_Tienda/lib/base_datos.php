@@ -61,6 +61,24 @@
     return  $conexion->query($sql);
   
   }
+  //Obtener datos de un usuario
+  function get_usuario($conexion, $id){
+    $sql = "SELECT id, nombre, apellidos,edad, provincia FROM usuarios WHERE id=$id";
+    return  $conexion->query($sql);
+  
+  }
+  //Editar usuario
+  function editar_usuario($conexion, $id, $nombre,$apellidos,$edad, $provincia) {
+    $sql = "UPDATE usuarios SET nombre='$nombre' ,apellidos='$apellidos' ,edad='$edad',provincia='$provincia' WHERE id=$id;";
+    return $conexion->query($sql) or die($conexion->error); 
+    
+  }
+  //Eliminar usuario
+  function eliminar_usuario( $conexion,$id){
+    $sql = "DELETE FROM usuarios where id=$id";
+    return $conexion->query($sql) or die($conexion->error);
+  
+  }
   //Cerrar conexión
  function cerrar_conexion($conexion){
     $conexion->close();
