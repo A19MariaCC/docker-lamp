@@ -32,7 +32,7 @@
     include("lib/base_datos.php");
         //Obter conexión
         $conexion = get_conexion();
-        //Seleccionar bd
+        //Seleccionar base de datos
         select_db_tienda($conexion);
         //Consulta obtención dos usuarios (array)
         //Crear lista de usuarios
