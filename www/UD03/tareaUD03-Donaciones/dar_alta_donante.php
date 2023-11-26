@@ -20,7 +20,7 @@
         include("lib/funcionalidades.php");
         $conPDO = conexion();
         select_db_donacion($conPDO);
-
+        //Validamos los datos recibidos por formulario antes de almacenarlos 
         if(isset($_POST["enviar"])){
             if(!empty($_POST["nombre"])){
                 $nombre = test_input($_POST["nombre"]);
@@ -64,10 +64,6 @@
                 echo "Donante registrado con éxito";
             }
         }
-
-
-
-
 
     ?>
     <div>
