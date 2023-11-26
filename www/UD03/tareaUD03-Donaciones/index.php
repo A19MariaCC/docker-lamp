@@ -35,7 +35,7 @@
         <a class="btn btn-primary" href="dar_alta_donante.php" role="button">Alta donantes</a>
         <a class="btn btn-primary" href="buscar_donantes.php" role="button">Buscar donantes</a>
         <a class="btn btn-primary" href="listar_donantes.php" role="button">Listar donantes</a>
-        <a class="btn btn-primary" href="dar_alta_administrador.php" role="button">Nuevos administradores</a>
+        <a class="btn btn-primary" href="altaadmin.php" role="button">Nuevos administradores</a>
     </div>
 
     <footer>
