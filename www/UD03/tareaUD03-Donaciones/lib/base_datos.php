@@ -1,4 +1,5 @@
 <?php
+    //función para obtener la conexión
     function conexion(){
         $servername = "db";
         $username = "root";
@@ -15,7 +16,7 @@
             echo "Fallo en la conexión: " . $e->getMessage();
         } 
     }
-
+    //función para crear la base de datos donacion
     function crear_bd_donacion($conPDO){
         try{
             $sql = "CREATE DATABASE IF NOT EXISTS donacion";
@@ -25,7 +26,7 @@
             echo $e->getMessage();
         }
     }
-
+    //función para seleccionar la base de datos donacion
     function select_db_donacion($conPDO){
         $sql = "USE donacion";
         try{
@@ -34,7 +35,7 @@
             echo $e->getMessage();
         }
     }
-
+    //función para crear la tabla donantes
     function crear_tabla_donantes($conPDO){
         $sql = "CREATE TABLE IF NOT EXISTS donantes(
             id INT(6) AUTO_INCREMENT PRIMARY KEY,
@@ -53,7 +54,7 @@
             echo $e->getMessage();
         }
     }
-
+    //función para crear la tabla administradores
     function crear_tabla_administradores($conPDO){
         $sql = "CREATE TABLE IF NOT EXISTS administradores(
             nombre VARCHAR(50) PRIMARY KEY ,
@@ -67,7 +68,7 @@
             echo $e->getMessage();
         }
     }
-
+    //función para crear la tabla histórico
     function crear_tabla_historico($conPDO){
         $sql = "CREATE TABLE IF NOT EXISTS historico(
             idDonante INT(6) NOT NULL,
@@ -83,7 +84,7 @@
             echo $e->getMessage();
         } 
     }
-
+    //función para insertar donantes en la tabla donantes
     function alta_donantes($conPDO, $nombre, $apellidos, $edad, $grupoSanguineo, $codPostal, $movil){
         $stmt = $conPDO->prepare("INSERT INTO donantes (nombre, apellidos, edad, grupoSanguineo, codPostal, telefonoMovil)
         VALUES (:nombre, :apellidos,:edad,:grupoSanguineo,:codPostal,:movil)");
@@ -96,14 +97,14 @@
 
         $stmt->execute();
     }
-
+    //función para listar donantes
     function listar_donantes($conPDO){
         $stmt = $conPDO->prepare("SELECT id, nombre, apellidos, edad, grupoSanguineo, codPostal, telefonoMovil FROM donantes");
         $stmt->execute();
         return $stmt;
       
     }
-
+    //función para insertar una donación en la tabla historico
     function donar($conPDO, $idDonante, $fechaDonacion){
         
         $proximaDonacion = date("Y-m-d",strtotime($fechaDonacion."+ 4 month"));
@@ -115,13 +116,26 @@
         $stmt->execute();
         echo "Donación registrada con éxito";
     }
+    //función para eliminar un donante y sus donaciones de la tabla historico
+    function borrar_donante($conPDO, $idDonante){
+        $stmt = $conPDO->prepare("DELETE donantes,historico FROM donantes JOIN historico ON donantes.id = historico.idDonante WHERE donantes.id = $idDonante");
+        $stmt->execute(); 
+      }
+    //función para insertar un administrador en la tabla administradores
+    function alta_admin($conPDO,$nombre,$contra){
+        $stmt = $conPDO->prepare("INSERT INTO administradores (nombre, contrasena) VALUES (:nombre,:contrasena)");
+        $stmt->bindParam(':nombre',$nombre);
+        $stmt->bindParam('contrasena',$contra);
+        $stmt->execute();
+      }
+      //función para listar los administradores de la tabla administradores
+    function listar_admin($conPDO){
+        $stmt = $conPDO->prepare("SELECT * FROM administradores");
+        $stmt->execute();
+        return $stmt;
+    }
+    //función para cerrar la conexión
     function cerrar_conexion($conPDO){
         $conPDO = null;
       }
-    
-      function borrar_donante($conPDO, $idDonante){
-        $stmt = $conaPDO->prepare("DELETE donantes,historico FROM donantes JOIN historico ON donantes.id = historico.idDonante WHERE donantes.id = $idDonante");
-        $stmt->execute(); 
-      }
-
 ?>
