@@ -18,17 +18,17 @@
     <div>
         <h1>Listado de donantes</h1>
         <table>
-    <thead>
-      <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Apellidos</th>
-        <th scope="col">Edad</th>
-        <th scope="col">Grupo Sanguineo</th>
-        <th scope="col">Código Postal</th>
-        <th scope="col">Teléfono móvil</th>
-      </tr>
+        <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Grupo Sanguineo</th>
+            <th scope="col">Código Postal</th>
+            <th scope="col">Teléfono móvil</th>
+        </tr>
 
-    </thead>
+        </thead>
     <tbody>
     <?php
         include("lib/base_datos.php");
@@ -51,9 +51,9 @@
                 echo "</tr> ";
         }
     ?>
+    </tbody>
     </table>
     </div>
-
     <footer>
         <p><a href='index.php'>Página de inicio</a></p>
     </footer>
