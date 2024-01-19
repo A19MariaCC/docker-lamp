@@ -1,3 +1,16 @@
+<?php
+    session_start();
+/* Ejercicio 1. 
+Cuenta el número de visitas que realiza un usuario a una página web. */
+if(!isset($_SESSION['contador'])) {
+    $_SESSION['contador'] = 0;
+  } else {
+    $_SESSION['contador']++;
+  }
+  
+  echo "Visita número:".  $_SESSION['contador'];
+  
+?>
 <!doctype html>
 <html lang="es">
 <head>
