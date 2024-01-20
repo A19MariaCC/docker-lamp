@@ -39,30 +39,54 @@
       echo "Error creando la tabla".$conexion->error;
     }
   }
+
+  //Modificar la tabla usuarios para añadir el campo de password
+  function modificar_tabla_usuarios($conexion){
+    $sql = "ALTER TABLE usuarios ADD pass VARCHAR(500) NOT NULL AFTER apellidos";
+    if($conexion->query($sql)){
+      echo "Tabla usuarios modificada correctamente";
+    }else{
+      echo "No se ha podido modificar la tabla usuarios".$conexion->error;
+    }
+    
+  }
  
   //Insertar usuarios
-  function alta_usuarios($conexion, $nombre, $apellidos, $edad, $provincia){
-    $stmt = $conexion->prepare("INSERT INTO usuarios(nombre, apellidos, edad, provincia)
-    VALUES(?, ?, ?, ?)");
-    $stmt->bind_param('ssis',$nombre, $apellidos, $edad, $provincia);
+  function alta_usuarios($conexion, $nombre, $apellidos, $password, $edad, $provincia){
+    $stmt = $conexion->prepare("INSERT INTO usuarios(nombre, apellidos, pass, edad, provincia)
+    VALUES(?, ?, ?, ?, ?)");
+    $cifrado = password_hash($password, PASSWORD_DEFAULT);
+    $stmt->bind_param('sssis',$nombre, $apellidos, $cifrado, $edad, $provincia);
     $stmt->execute() or die($conexion->error);
     $conexion->close();
   }
+
+  /*Función para consultar las contraseñas
+  function login($conexion, $nombre){
+    $sql = "SELECT nombre, pass FROM usuarios WHERE nombre='$nombre'";
+    $resultados = $conexion->query($sql) or die($conexion->error);
+    if($resultados->num_rows){
+      while($row = $resultados->fetch_assoc()){
+          $_SESSION['nombre'] = $row['nombre'];
+          $_SESSION['password'] = $row['pass'];
+      }
+    }
+  }*/
   //Listar usuarios
   function listar_usuarios($conexion){
-    $sql = "SELECT id, nombre, apellidos,edad, provincia FROM usuarios";
+    $sql = "SELECT id, nombre, apellidos, pass, edad, provincia FROM usuarios";
     return  $conexion->query($sql);
   
   }
   //Obtener datos de un usuario
   function get_usuario($conexion, $id){
-    $sql = "SELECT id, nombre, apellidos,edad, provincia FROM usuarios WHERE id=$id";
+    $sql = "SELECT id, nombre, apellidos,pass, edad, provincia FROM usuarios WHERE id=$id";
     return  $conexion->query($sql);
   
   }
   //Editar usuario
-  function editar_usuario($conexion, $id, $nombre,$apellidos,$edad, $provincia) {
-    $sql = "UPDATE usuarios SET nombre='$nombre' ,apellidos='$apellidos' ,edad='$edad',provincia='$provincia' WHERE id=$id;";
+  function editar_usuario($conexion, $id, $nombre,$password, $apellidos,$edad, $provincia) {
+    $sql = "UPDATE usuarios SET nombre='$nombre' ,apellidos='$apellidos' ,pass='$password', edad='$edad',provincia='$provincia' WHERE id=$id;";
     return $conexion->query($sql) or die($conexion->error); 
     
   }
@@ -71,6 +95,13 @@
     $sql = "DELETE FROM usuarios where id=$id";
     return $conexion->query($sql) or die($conexion->error);
   
+  }
+
+  //Añadir las contraseñas a los usuarios
+  function actualizarPass($conexion){
+    $sql = "UPDATE usuarios SET pass='abc123' WHERE id=1";
+    return $conexion->query($sql) or die($conexion->error);
+
   }
 
   // Crea una nueva tabla llamada productos. Sólo una vez, en el caso de que ya esté creada no volver a crearla. 
@@ -95,7 +126,8 @@
 
  //Insertar producto
  function alta_producto($conexion, $nombre, $descripcion, $precio, $unidades, $foto){
-  $stmt = $conexion->prepare("INSERT INTO productos(nombre, descripcion, precio, unidades, foto)
+  $foto = "archivos/modern-tap-11548791165ou82s36zqx.png";
+  $stmt = $conexion->prepare("INSERT INTO productos(nombre, descripcion, precio, unidades, imagen)
   VALUES(?, ?, ?, ?, ?)");
   $stmt->bind_param("ssdds",$nombre, $descripcion, $precio, $unidades, $foto);
   $stmt->execute() or die($conexion->error);

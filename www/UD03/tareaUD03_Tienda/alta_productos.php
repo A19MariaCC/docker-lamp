@@ -76,6 +76,7 @@
                             echo "El fichero ".htmlspecialchars(basename( $_FILES["imagen"]["name"]))." se ha subido correctamente al servidor";
                             //para subir la imagen a la base de datos
                                 $image = addslashes(file_get_contents($target_file));
+                                echo "<br><br>El archivo es ".$targetDir.$target_file;
                                 alta_producto($conexion, $nombreProducto, $descripcion, $precio, $unidades, $image);
                             
                         }else{
