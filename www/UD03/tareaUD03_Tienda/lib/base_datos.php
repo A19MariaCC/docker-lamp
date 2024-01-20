@@ -39,14 +39,7 @@
       echo "Error creando la tabla".$conexion->error;
     }
   }
-  //Validación de datos formulario
-  function filtrado($datos){
-    $datos = trim($datos); // Elimina espacios antes y después de los datos
-    $datos = stripslashes($datos); // Elimina backslashes \
-    $datos = htmlspecialchars($datos); // Traduce caracteres especiales en entidades HTML
-    return $datos;
-}
-
+ 
   //Insertar usuarios
   function alta_usuarios($conexion, $nombre, $apellidos, $edad, $provincia){
     $stmt = $conexion->prepare("INSERT INTO usuarios(nombre, apellidos, edad, provincia)
@@ -79,10 +72,43 @@
     return $conexion->query($sql) or die($conexion->error);
   
   }
+
+  // Crea una nueva tabla llamada productos. Sólo una vez, en el caso de que ya esté creada no volver a crearla. 
+ function crear_tabla_productos($conexion){
+  $sql = "CREATE TABLE IF NOT EXISTS productos(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(100) NOT NULL,
+    precio FLOAT(8) NOT NULL,
+    unidades FLOAT(8) NOT NULL,
+    imagen LONGBLOB
+    )";
+
+    
+    if($conexion->query($sql)){
+      echo "<br/>Tabla productos creada correctamente";
+    }else{
+      echo "Error creando la tabla".$conexion->error;
+    }
+    
+ }
+
+ //Insertar producto
+ function alta_producto($conexion, $nombre, $descripcion, $precio, $unidades, $foto){
+  $stmt = $conexion->prepare("INSERT INTO productos(nombre, descripcion, precio, unidades, foto)
+  VALUES(?, ?, ?, ?, ?)");
+  $stmt->bind_param("ssdds",$nombre, $descripcion, $precio, $unidades, $foto);
+  $stmt->execute() or die($conexion->error);
+  $stmt->close();
+}
+
   //Cerrar conexión
  function cerrar_conexion($conexion){
     $conexion->close();
   }
+
+  
+ 
 
 
 

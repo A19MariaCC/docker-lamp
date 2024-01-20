@@ -1,5 +1,6 @@
 <?php
     include("lib/base_datos.php");
+
     //Conexión
     $conexion = get_conexion();
     //Seleccionar bd
@@ -46,7 +47,7 @@
     <!-- o "action" chama a editar.php de xeito reflexivo-->
     <?php
     if($user->num_rows>0){
-        while($row = $user->fetch_assoc()){
+        $row = $user->fetch_assoc();
     ?>  
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <input type="hidden" name="id_user" value="<?php echo $id_user ?>"/>
@@ -80,8 +81,8 @@
       </select>
       <input type="submit" name="editar" value="Modificar Usuario">
       <?php }
-                }
-    } 
+        }
+    
     ?>
         </form>
     <footer>

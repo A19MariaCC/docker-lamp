@@ -24,6 +24,7 @@ if(!isset($_SESSION['contador'])) {
 <body>
     <?php
         include("lib/base_datos.php");
+        include("lib/funciones.php");
         //Obtener conexión
         $conexion = get_conexion();
         //crear_bd_tienda($conexion);
@@ -32,6 +33,8 @@ if(!isset($_SESSION['contador'])) {
         select_db_tienda($conexion);
         //crear_tabla_usuario($conexion);
         crear_tabla_usuario($conexion);
+        //crear_tabla_productos($conexion);
+        crear_tabla_productos($conexion);
     ?>
     <h1>Tienda IES San Clemente</h1>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
@@ -40,6 +43,7 @@ if(!isset($_SESSION['contador'])) {
     <p>
         <a class="btn btn-primary" href="alta_usuarios.php" role="button"> Alta usuarios</a>
         <a class="btn btn-primary" href="listar_usuarios.php" role="button"> Listar usuarios</a>
+        <a class="btn btn-primary" href="alta_productos.php" role="button"> Alta productos</a>
     </p>
     <footer>
         <p>
