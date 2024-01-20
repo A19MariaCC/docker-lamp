@@ -1,3 +1,8 @@
+<?php
+    session_start();
+
+?>
+
 <!doctype html>
 <html lang="es">
 
@@ -30,6 +35,7 @@
     <tbody>
     <?php
     include("lib/base_datos.php");
+    include("lib/funciones.php");
         //Obter conexión
         $conexion = get_conexion();
         //Seleccionar base de datos

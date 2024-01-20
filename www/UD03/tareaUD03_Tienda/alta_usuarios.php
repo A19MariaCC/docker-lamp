@@ -13,13 +13,12 @@
     <h1>Alta de usuario </h1>
     <?php
     include("lib/base_datos.php");
+    include("lib/funciones.php");
         //Comprobar se veñen datos polo $_POST
     if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["enviar"])){
-        if(empty($_POST["nombre"]) || empty($_POST["apellidos"]) || empty($_POST["edad"])){
-            echo "Es necesario informar del nombre, apellidos y edad. Campos obligatorios";
-        }else{
             $nombre = filtrado($_POST['nombre']);
             $apellidos = filtrado($_POST['apellidos']);
+            $password = filtrado($_POST['password']);
             $edad = filtrado($_POST['edad']);
             $provincia = filtrado($_POST['provincia']);
 
@@ -28,11 +27,10 @@
             //Seleccionar bd
             select_db_tienda($conexion);
             //Executar o INSERT
-            alta_usuarios($conexion, $nombre, $apellidos, $edad, $provincia);
+            alta_usuarios($conexion, $nombre, $apellidos, $password, $edad, $provincia);
             echo "Usuario dado de alta correctamente";
 
         }
-    }
         
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
@@ -46,6 +44,8 @@
             <input type="text" placeholder="Nombre" aria-label="Nombre" name="nombre"></p>
             <p><label for="apellidos">Apellidos: </label>
             <input type="text" placeholder="Apellidos" aria-label="Apellidos" name="apellidos"></p>
+            <p><label for="pass">Contraseña: </label>
+            <input type="password" placeholder="Contraseña" aria-label="Contraseña" name="pass"></p>
             <p><label for="edad">Edad: </label>
             <input type="text" placeholder="Edad" aria-label="Edad" name="edad"></p>
             <p><label for="provincia">Provincia: </label>

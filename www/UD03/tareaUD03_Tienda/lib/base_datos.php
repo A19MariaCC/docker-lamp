@@ -61,17 +61,6 @@
     $conexion->close();
   }
 
-  /*Función para consultar las contraseñas
-  function login($conexion, $nombre){
-    $sql = "SELECT nombre, pass FROM usuarios WHERE nombre='$nombre'";
-    $resultados = $conexion->query($sql) or die($conexion->error);
-    if($resultados->num_rows){
-      while($row = $resultados->fetch_assoc()){
-          $_SESSION['nombre'] = $row['nombre'];
-          $_SESSION['password'] = $row['pass'];
-      }
-    }
-  }*/
   //Listar usuarios
   function listar_usuarios($conexion){
     $sql = "SELECT id, nombre, apellidos, pass, edad, provincia FROM usuarios";

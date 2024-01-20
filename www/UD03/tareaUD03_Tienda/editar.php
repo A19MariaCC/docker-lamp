@@ -1,16 +1,20 @@
 <?php
+    session_start();
     include("lib/base_datos.php");
+    include("lib/funciones.php");
 
     //Conexión
     $conexion = get_conexion();
     //Seleccionar bd
     select_db_tienda($conexion);
+    actualizarPass($conexion);
 
     //Obter os datos de $_POST
     if (isset($_POST["editar"])) {
         $id_user = $_POST["id_user"];
         $nombre = filtrado($_POST["name"]);
         $apellidos = filtrado($_POST["apellidos"]);
+        $password = filtrado($_POST['pass']);
         $edad = filtrado($_POST["edad"]);
         $provincia = filtrado($_POST["provincia"]);
       
@@ -54,6 +58,7 @@
     <!--Mostramos en cada casilla los datos del usuario para modificarlos con echo $row -->
         Nombre: <input type="text" name="name" value=<?php echo $row['nombre'] ?>>
         Apellidos: <input type="text" name="apellidos" value=<?php echo $row['apellidos'] ?>>
+        Contraseña: <input type="password" name="pass">
         Edad: <input type="text" name="edad" value=<?php echo $row['edad'] ?>>
       <label for="provincia">Provincia: </label>
       <select name="provincia">

@@ -30,8 +30,9 @@
         <p><label for="unidades">Unidades:</label>
         <input type="text" name="unidades"></p>
         <p><label for="imagen">Subir imagen:</label>
+        <!--Modifica el ejercicio anterior para que se pueda subir más de una imagen.-->
         <!-- Añadimos la propiedad multiple para poder subir más de un archivo -->
-        <input type="file" name="imagen" id="imagen"></p>
+        <input type="file" name="imagen[]" id="imagen[]" multiple=""></p>
         <p><input type="submit" name="enviar" value="Enviar">
     </form>
     <?php
@@ -55,41 +56,44 @@
                 $unidades = filtrado($_POST['unidades']);
             }else{
                 echo "Introduce el número de unidades. Solo se permiten valores numéricos";
-            }
-            if(!empty($_FILES['imagen']['name'])){
-                $foto = $_FILES['imagen']['name'];
-            }else{
-                echo "Debes adjuntar una imagen del producto";
-            }
+            }  
         }
+            
+        
 
         //para subir las imagenes
-        
-        $targetDir = "archivos/";
-        if(isset($foto) && isset($_POST['enviar'])){
-            $target_file = $targetDir.basename($foto);
-            $tipo_fichero = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-            if(!empty($_FILES['imagen']['name']) && !file_exists($target_file)){
-                if(comprobaTamanho($_FILES["imagen"]["size"])){
-                    if(compruebaExtension($tipo_fichero)){
-                        if(move_uploaded_file($_FILES["imagen"]["tmp_name"],$target_file)){
-                            echo "El fichero ".htmlspecialchars(basename( $_FILES["imagen"]["name"]))." se ha subido correctamente al servidor";
-                            //para subir la imagen a la base de datos
+        //Al modificar el ejercicio para poder subir más de una imagen al servidor, me salta un error que se supera el tamaño permitido para el archivo
+        foreach($_FILES["imagen"]['tmp_name'] as $key => $tmp_name){
+            if($_FILES["imagen"]["name"][$key]) {
+                $foto = $_FILES["imagen"]["name"][$key]; //Obtenemos el nombre original del archivo
+                $source = $_FILES["imagen"]["tmp_name"][$key]; //Obtenemos un nombre temporal del archivo  
+                $targetDir = "archivos/";
+            if(isset($foto) && isset($_POST['enviar'])){
+                $target_file = $targetDir.basename($foto);
+                $tipo_fichero = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                if(!empty($_FILES['imagen']['name']) && !file_exists($target_file)){
+                    if(comprobaTamanho($_FILES["imagen"]["size"])){
+                        if(compruebaExtension($tipo_fichero)){
+                            if(move_uploaded_file($_FILES["imagen"]["tmp_name"],$target_file)){
+                                echo "El fichero ".htmlspecialchars(basename( $_FILES["imagen"]["name"]))." se ha subido correctamente al servidor";
+                                //para subir la imagen a la base de datos
                                 $image = addslashes(file_get_contents($target_file));
                                 echo "<br><br>El archivo es ".$targetDir.$target_file;
                                 alta_producto($conexion, $nombreProducto, $descripcion, $precio, $unidades, $image);
                             
+                            }else{
+                                echo "No se ha podido subir el archivo";
+                            }
                         }else{
-                            echo "No se ha podido subir el archivo";
-                        }
-                    }else{
                             echo "Introduce un archivo en formato jpg, png o gif";
-                    }                
-                }else{
-                    echo "El archivo supera el tamaño máximo permitido";
-                }
+                        }                
+                    }else{
+                        echo "El archivo supera el tamaño máximo permitido";
+                    }
             }else{
                 echo "El fichero ya existe";
+            }
+            }
             }
         }
     ?>

@@ -1,5 +1,11 @@
 <?php
     session_start();
+    if(!isset($_SESSION['usuario'])){
+        header('Location: login.php');
+    }else{
+    
+        
+  
 /* Ejercicio 1. 
 Cuenta el número de visitas que realiza un usuario a una página web. */
 if(!isset($_SESSION['contador'])) {
@@ -33,6 +39,8 @@ if(!isset($_SESSION['contador'])) {
         select_db_tienda($conexion);
         //crear_tabla_usuario($conexion);
         crear_tabla_usuario($conexion);
+        //modificar la tabla usuarios para añadir el campo password
+        modificar_tabla_usuarios($conexion);
         //crear_tabla_productos($conexion);
         crear_tabla_productos($conexion);
     ?>
@@ -44,6 +52,7 @@ if(!isset($_SESSION['contador'])) {
         <a class="btn btn-primary" href="alta_usuarios.php" role="button"> Alta usuarios</a>
         <a class="btn btn-primary" href="listar_usuarios.php" role="button"> Listar usuarios</a>
         <a class="btn btn-primary" href="alta_productos.php" role="button"> Alta productos</a>
+        <a class="btn btn-primary" href="logout.php" role="button"> Logout</a>
     </p>
     <footer>
         <p>
@@ -53,3 +62,7 @@ if(!isset($_SESSION['contador'])) {
 </body>
 
 </html>
+<?php
+
+}
+?>

@@ -23,5 +23,19 @@
         }
     }
 
+    function comprobar_usuario($conexion, $nombre, $pass){
+        $sql = "SELECT nombre, pass FROM usuarios WHERE nombre='$nombre'";
+        $resultados = $conexion->query($sql) or die($conexion->error);
+
+        $usuario_bd = mysqli_fetch_assoc($resultados);
+
+        if($usuario_bd && password_verify($pass, $usuario_bd['pass'])){
+           $usuario['nombre']=$nombre;
+           //$usuario['rol']=0;
+           return $usuario;
+        }else return false;
+      
+      }
+
 
 ?>
