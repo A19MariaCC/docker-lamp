@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <h2 class="mb-4">{{titulo}}</h2>
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div>
+        {% for planta in informacion %}
+                    <img src="{{ planta.imagen }}" width="100" height="100"></a>
+                    <span>{{ planta.descripcion }} - {{ planta.precio }}</span>
+            {% endfor %}    
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <h2 class="mb-4">Donde encontrarnos en Santiago de Compostela</h2>
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+            </ul>
+        </nav>
+    </div>
+    <ul>
+
+        {% for floristeria in floristerias %}
+                    <li>{{ floristeria.nombre }} - {{ floristeria.direccion }}</li>
+            {% endfor %} 
+    </ul>   
+{% endblock %}
