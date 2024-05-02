@@ -1,21 +1,32 @@
 {% extends 'base.html.twig' %}
-
-{% block title %} Tienda DWCS {% endblock %}
-
+{% block head %}
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Tienda DWCS!{% endblock %}</title>
+        {%block stylesheets %}
+            {# Otros bloques #}
+            <link rel="stylesheet" href="/styles/estilos.css">
+       {% endblock %}
+    </head>
+{% endblock %}
 {% block body %}
-
-    <div class="container">
-        <h1 class="display-4">Lista de productos</h1>
-    </div>
-    <div class="container">
-        <div class="col ps-5">
-            <h2 class="mb-4">Productos</h2>
-        </div>
+    <header class="cabecera">
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/listaTiendas">Ver tiendas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Lista de productos</h1>
+    <section class="principal">       
+        <ul class="gallery">
+        {# Recorremos el array creado en la clase controlador para recuperar las claves #}
             {% for planta in plantas %}
-                    <a href="{{planta.enlace}}"><img src="{{ planta.imagen }}" width="100" height="100"></a>
-                    <div class="descripcion">
-                        {{planta.descripcion}}
-                    </div>
-            {% endfor %}  
-        <p><a href="/listaTiendas">Ver tiendas</a>
+                <li><figure>{{planta.descripcion}}<a href="{{planta.enlace}}"><img src="{{ planta.imagen }}"></a></figure>
+                </li>
+            {% endfor %} 
+            </ul>
+    </section>         
 {% endblock %}

@@ -1,18 +1,29 @@
 {% extends 'base.html.twig' %}
-
+{% block head %}
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Tienda DWCS!{% endblock %}</title>
+        {%block stylesheets %}
+            {# Otros bloques #}
+            <link rel="stylesheet" href="/styles/estilos.css">
+       {% endblock %}
+    </head>
+{% endblock %}
 {% block body %}
-
-    <div class="container">
-        <h2 class="mb-4">Donde encontrarnos en Santiago de Compostela</h2>
+    <header class="cabecera">
         <nav>
             <ul>
                 <li><a href="/">Inicio</a></li>
             </ul>
         </nav>
-    </div>
-    <ul>
-
+    </header>
+    <section class="principal">
+        <h1>Donde encontrarnos en Santiago de Compostela</h1>
+    <ul class="tiendas">
+    {# Recorremos el array creado en la clase controlador para tiendas #}
         {% for floristeria in floristerias %}
+            {# Recuperamos la clave nombre y la clave direccion #}
                     <li>{{ floristeria.nombre }} - {{ floristeria.direccion }}</li>
             {% endfor %} 
     </ul>   

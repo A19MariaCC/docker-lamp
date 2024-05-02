@@ -1,0 +1,124 @@
+:root {
+  --main-letra-color:#415840;
+  --main-letra-dark-color: black;
+  --main-fondo-color: #ebe2e5;
+  --menu-fondo-color: #f3c5d9;
+  --page-fondo-color: #feffff;
+    font: 16px/1.5 "Dosis", sans-serif;
+  }
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+ul {
+    list-style: none;
+  }
+  
+a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+body>* {
+    padding: 20px;
+  }
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+  
+  }
+.cabecera {
+    background-color: white;
+    width: 100vw;
+    display: flex;
+    flex-direction: inline;
+    justify-content: space-between;
+    align-items: center;
+  }
+.cabecera nav {
+    width: 30vw;
+   }
+.cabecera nav ul{
+    display: flex;
+    flex-direction: inline;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+.cabecera nav ul li a{
+    font-size: 1.5rem;
+  }
+.cabecera nav ul li a {
+    padding: 5px 18px;
+  }
+.cabecera ul li a:hover{
+    border: 1px solid;
+    border-radius: 5px;
+    background-color: var(--menu-fondo-color);
+    color: var(--main-letra-color);
+  }
+h1 {
+    text-transform: uppercase;
+    font-size: 1rem;
+    text-align: center;
+  }
+.principal {
+    background-color: var(--main-fondo-color);
+  }
+.gallery {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    margin: 0 auto;
+  }
+.gallery li{
+    display: flex;
+    margin: .5rem;
+    
+  }
+li figure img{
+    border-radius: 10px;
+  }
+
+.gallery figure img{
+    width: 100%;
+    height: auto;
+    -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      -o-transition: all 0.5s ease-in-out;
+      -ms-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out;
+  }
+  section {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  li img:hover {
+    transform: scale(1.2);
+  }
+.tiendas{
+    text-align: center;
+}
+.tiendas li {
+    padding: 0.5rem;
+}
+
+
+  
+
+
+
+  
