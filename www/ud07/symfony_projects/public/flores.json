@@ -1,0 +1,16 @@
+[
+    {
+      "nombre": "Orchidaceae",
+      "descripcion": "Las orquídeas son plantas herbáceas, perennes —raramente anuales—, terrestres o epífitas, ocasionalmente trepadoras. Unas pocas especies carecen de clorofila, y son micoheterotróficas.",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/5/55/PhalaenopsisOphrysPaphiopedilumMaxillaria.jpg",
+      "precio": "20€"
+      
+    },
+    {
+      "nombre": "Tulipa",
+      "descripcion" : "es un género de plantas perennes y bulbosas perteneciente a la familia Liliaceae, en el que se incluyen los populares tulipanes, nombre común con el que se designa a todas las especies, híbridos y cultivares de este género.",
+      "imagen": "hhttps://upload.wikimedia.org/wikipedia/commons/1/1a/Tulip_agenensis_ZE.jpg",
+      "precio": "18€"
+    }
+
+  ]

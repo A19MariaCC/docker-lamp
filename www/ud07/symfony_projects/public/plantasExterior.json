@@ -1,0 +1,16 @@
+[
+    {
+      "nombre": "Begonia",
+      "descripcion": "Son plantas terrestres (a veces epífitas) herbáceas, algunas de porte semiarbustivo o incluso pequeños árboles y otras trepadoras, perennes o vivaces.",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Begonia1.jpg",
+      "precio": "20€"
+      
+    },
+    {
+      "nombre": "Impatiens walleriana",
+      "descripcion" : "Es una planta herbácea perenne, suculenta que puede alcanzar una altura de entre 15 y 60 cm. Los tallos son poco ramificados, glabros y algunas veces rojizos, enraizando en las nudos inferiores.",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/2/28/Impatienswalleriana.jpg",
+      "precio": "18€"
+    }
+
+  ]
