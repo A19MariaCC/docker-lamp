@@ -12,22 +12,19 @@
 {% endblock %}
 {% block body %}
     <header class="cabecera">
-    {{ component('Alert') }}
         <nav>
             <ul>
                 <li><a href="/">Inicio</a></li>
-                <li><a href="/listaTiendas">Ver tiendas</a></li>
             </ul>
         </nav>
     </header>
-    <h1>Lista de productos</h1>
-    <section class="principal">       
-        <ul class="gallery">
-        {# Recorremos el array creado en la clase controlador para recuperar las claves #}
-            {% for planta in plantas %}
-                <li><figure>{{planta.descripcion}}<a href="{{planta.enlace}}"><img src="{{ planta.imagen }}"></a></figure>
-                </li>
+    <section class="principal">
+        <h1>Donde encontrarnos en Santiago de Compostela</h1>
+    <ul class="tiendas">
+    {# Recorremos el array creado en la clase controlador para tiendas #}
+        {% for floristeria in floristerias %}
+            {# Recuperamos la clave nombre y la clave direccion #}
+                    <li>{{ floristeria.nombre }} - {{ floristeria.direccion }}</li>
             {% endfor %} 
-            </ul>
-    </section>         
+    </ul>   
 {% endblock %}

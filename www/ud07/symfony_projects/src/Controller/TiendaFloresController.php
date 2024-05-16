@@ -5,7 +5,7 @@
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
     class TiendaFloresController extends AbstractController {
-        #[Route('/', name: 'app_homepageTiendaFlores')]
+        #[Route('/7', name: 'app_homepageTiendaFlores')]
         public function homepageTiendaFlores() {
 
             $plantas = [
@@ -21,7 +21,7 @@
             ]);
         }
 
-        #[Route('/listarPlantas/{slug}')]
+        #[Route('/listarPlantas7/{slug}')]
         public function listarPlantas(String $slug=null){
             $orquideas = [
                 ['descripcion' => 'Orquídea Blanca', 'precio' => '20 €', 'imagen' => '../images/plantas/orquideaBlanca.jpg'],
@@ -63,7 +63,7 @@
             ]);
         }
 
-        #[Route('/listaTiendas/{slug}', name: 'app_listadoTiendasFlores')]
+        #[Route('/listaTiendas7/{slug}', name: 'app_listadoTiendasFlores')]
         public function listaTiendas(String $slug = null) {
 
             $floristerias = [

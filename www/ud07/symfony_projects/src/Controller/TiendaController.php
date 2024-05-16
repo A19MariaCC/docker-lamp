@@ -4,9 +4,12 @@
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\Cache\CacheInterface;
+use Symfony\Contracts\Cache\CacheItemInterface;
 
     class TiendaController extends AbstractController {
-        #[Route('/TiendaController')]
+        #[Route('/Ejemplo')]
         public function homepage() {
 
             $productos = [
@@ -21,13 +24,21 @@ use Symfony\Component\Routing\Annotation\Route;
             ]);
         }
 
-        #[Route('/ejercicios/lista/{slug}')]
-        public function listar(String $slug=null){
-            if($slug){
-                return new Response("Página futura para listar ".$slug);
-            }else{
-                return new Response("Página futura para listar todo");
-            }
+        #[Route('listarProductos/{slug}')]
+        public function listar(HttpClientInterface $httpCliente, CacheInterface $cache, String $slug=null): Response{
+            
+                $productos = $cache->get('productos_data', function(CacheItemInterface $cacheItem) use ($httpCliente){
+                $cacheItem->expiresAfter(5);
+                $response = $httpCliente-> request('GET' ,'https://raw.githubusercontent.com/SymfonyCasts/vinyl-mixes/main/mixes.json');
+                return $response->toArray();
+            });
+
+            //dd($productos);
+                
+            return $this -> render('tienda/listar.html.twig', [
+                'tipo' => $slug,
+                'productos' => $productos,
+            ]);
             
         }
     

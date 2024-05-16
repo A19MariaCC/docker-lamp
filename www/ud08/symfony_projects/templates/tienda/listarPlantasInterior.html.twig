@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block head %}
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Tienda DWCS!{% endblock %}</title>
+        {%block stylesheets %}
+            {# Otros bloques #}
+            <link rel="stylesheet" href="/styles/estilos.css">
+       {% endblock %}
+    </head>
+{% endblock %}
+{% block body %}
+    <header class="cabecera">
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+            </ul>
+        </nav>
+    </header>
+    {# Recuperamos el valor de la variable titulo #}
+    <h1 class="titulo">{{titulo}}:{{tipo}}</h1>
+    <section class="principal">
+        <ul class="gallery">
+        {# Recorrremos el array creado en la clase del controlador para recuperar las claves #}
+        {% for producto in productos %}
+             <li><figure><img src="{{ producto.imagen }}" width="220" height="220"></figure>
+                <p><strong>{{ producto.nombre }}</strong>- </p>
+                <p><em>{{ producto.descripcion }}</em> - <strong>{{ producto.precio }}</strong></p>
+             </li>
+        {% endfor %} 
+        </ul>
+    </section>      
+{% endblock %}
