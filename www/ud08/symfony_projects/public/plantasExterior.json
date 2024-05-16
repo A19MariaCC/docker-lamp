@@ -1,0 +1,22 @@
+[
+    {
+      "nombre": "Begonia",
+      "descripcion": "Son plantas terrestres (a veces epífitas) herbáceas, algunas de porte semiarbustivo o incluso pequeños árboles y otras trepadoras, perennes o vivaces.",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Begonia1.jpg",
+      "precio": "20€"
+      
+    },
+    {
+      "nombre": "Alegria del hogar o Impatiens walleriana",
+      "descripcion" : "Es una planta herbácea perenne, suculenta que puede alcanzar una altura de entre 15 y 60 cm. Los tallos son poco ramificados, glabros y algunas veces rojizos, enraizando en las nudos inferiores.",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/2/28/Impatienswalleriana.jpg",
+      "precio": "18€"
+    },
+    {
+      "nombre": "Hortensia o Hydrangea",
+      "descripcion" : "Riego: En el período primaveral-veraniego los riegos de las hortensias tienen que ser abundantes y frecuentes, de modo que el sustrato siempre esté húmedo (pero no empapado). Además es aconsejable pulverizar a menudo la cabellera (con agua no calcárea) para crear un entorno húmedo adecuado a la planta de hortensia, pero estando atentos al hecho que una excesiva humedad puede favorecer el desarrollo de hongos y otros parásitos.",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/1/16/Hydrangea_macrophylla_-_Bigleaf_hydrangea1.jpg",
+      "precio": "18€"
+    }
+
+  ]

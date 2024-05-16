@@ -1,0 +1,23 @@
+[
+    {
+      "nombre": "Lengua de suegra o Sansevieria trifasciata",
+      "descripcion": "es una planta semisuculenta que crece en rosetas basales y verticales, las hojas son erectas, lanceoladas, agudas y rígidas, de 40 a 140 cm de largo y unos 4 a 10 cm de ancho.",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/d/da/Sansevieria_trifasciata_Plant_3264px.jpg",
+      "precio": "25€"
+      
+    },
+    {
+      "nombre": "Calathea",
+      "descripcion" : "plantas herbáceas, rizomatosas, que en estado espontáneo pueden alcanzar un metro de altura, mientras que si son cultivadas no rebasan los 50-60 cm. Tiene hojas muy hermosas, con extraordinario colorido en alternancia de verdes, rosas y púrpuras, en varias tonalidades y matices.",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Starr_080716-9470_Calathea_crotalifera.jpg",
+      "precio": "30€"
+    },
+    {
+      "nombre": "Anthurium",
+      "descripcion" : "Exposición: las macetas con anturio han de estar expuestas a una buena luz, pero no al sol directo, lejos de fuentes de calor; hay que evitar las corrientes de aire y los frecuentes cambios de sitio.",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Starr_080716-9470_Calathea_crotalifera.jpg",
+      "precio": "19€"
+    }
+    
+
+  ]
