@@ -1,7 +1,7 @@
 [
     {
       "nombre": "Orquídea barco o Cymbidiums",
-      "descripcion": "Las Cymbidiums necesitan luz solar la mayor parte del año para florecer, pero si se exponen demasiado se pueden quemar y no florecer. El sol de la mañana filtrado o de la tarde indirecto pudiera ser suficiente. La luz filtrada debe tener entre un 45%-55% de sombra. Si no se tiene un lugar así, un patio donde el sol incida solamente ciertas horas al día o la sombra de un árbol servirá. Cuando la planta empieza a florecer, necesita un poco más de sombra para prolongar la vida de las flores.",
+      "descripcion": "Las Cymbidiums necesitan luz solar la mayor parte del año para florecer, pero si se exponen demasiado se pueden quemar y no florecer. El sol de la mañana filtrado o de la tarde indirecto pudiera ser suficiente.",
       "imagen": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Cymbidium_Clarisse_Best_Pink.jpg",
       "precio": "25€"
       
@@ -15,15 +15,9 @@
 
     {
       "nombre": "Tulipán",
-      "descripcion" : "Este tipo de cultivo se inicia con la adquisición de bulbos de tamaño comercial (calibre 11-12 o superiores) y la plantación de los mismos en el otoño. Se deben utilizar suelos arenosos y bien drenados. Los bulbos se plantan en líneas con los bulbos separados a 5 cm entre sí y a una profundidad de 4-5 cm.",
+      "descripcion" : "Este tipo de cultivo se inicia con la adquisición de bulbos de tamaño comercial (calibre 11-12 o superiores) y la plantación de los mismos en el otoño. Se deben utilizar suelos arenosos y bien drenados.",
       "imagen": "https://upload.wikimedia.org/wikipedia/commons/2/29/Tulip-blossom.jpg",
       "precio": "15€"
-    },
-    {
-      "nombre": "Freesia",
-      "descripcion" : "Son plantas herbáceas, de hojas ensiformes, aplanadas y flores vistosas, fragantes, dispuestas en espigas unilaterales.",
-      "imagen": "https://upload.wikimedia.org/wikipedia/commons/4/48/Flowers_February_2009-1.jpg",
-      "precio": "22€"
     }
-
+  
   ]
