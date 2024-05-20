@@ -23,8 +23,8 @@
                 'plantas' => $plantas,
             ]);
         }
-        /*He probado a configurar la caché para esta ruta pero no me funciona, me da error las claves al recorrer el array
-         en cambio sin hacer uso del servicio de caché si me funciona, por eso en las otras rutas no lo he configurado*/
+        /*He probado a configurar la caché para esta ruta pero no me funciona, tiene almancenada en chaché la consulta de la unidad anterior en la que hice 
+        el ejemplo de los apuntes de Sabela y no consigo que funcione*/
         #[Route('/listarFlores/{slug}')]
         public function listarFlores(HttpClientInterface $httpClient, CacheInterface $cache, String $slug=null): Response{
             $productos = $cache->get('productos_data', function(CacheItemInterface $cacheItem) use($httpClient){
@@ -32,8 +32,8 @@
             $respuesta = $httpClient->request('GET','https://raw.githubusercontent.com/A19MariaCC/docker-lamp/main/www/ud08/symfony_projects/public/flores.json');
             return $respuesta->toArray();
             });
-            
-            
+            //dd($productos);
+            //dd($slug);
             
             return $this->render('tienda/listarFlores.html.twig' , [
                 'titulo' => 'Listado de productos',
@@ -43,11 +43,13 @@
                 
         }
 
+        
+
         #[Route('/listarPlantasInterior/{slug}')]
         public function listarPlantasInterior(HttpClientInterface $httpClient, String $slug=null): Response{
             $respuesta = $httpClient->request('GET','https://raw.githubusercontent.com/A19MariaCC/docker-lamp/main/www/ud08/symfony_projects/public/plantasInterior.json');
             $productos = $respuesta->toArray();
-        
+            
             return $this->render('tienda/listarPlantasInterior.html.twig' , [
                 'titulo' => 'Listado de productos',
                 'tipo' => $slug,
@@ -62,7 +64,8 @@
         public function listarPlantasExterior(HttpClientInterface $httpClient, String $slug=null): Response{
             $respuesta = $httpClient->request('GET','https://raw.githubusercontent.com/A19MariaCC/docker-lamp/main/www/ud08/symfony_projects/public/plantasExterior.json');
             $productos = $respuesta->toArray();
-        
+            
+            
             return $this->render('tienda/listarPlantasExterior.html.twig' , [
                 'titulo' => 'Listado de productos',
                 'tipo' => $slug,

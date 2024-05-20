@@ -84,12 +84,10 @@ h1 {
 .gallery li{
     display: flex;
     margin: .5rem;
-    text-align: justify;
+    /*text-align: justify; */
     
   }
-  .gallery li p{
-    margin: 0.25rem;
-  }
+ 
   
 li figure img{
     border-radius: 10px;
