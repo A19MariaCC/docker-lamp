@@ -5,7 +5,8 @@
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Contracts\HttpClient\HttpClientInterface;
     use Symfony\Contracts\Cache\CacheInterface;
-    use Symfony\Contracts\Cache\CacheItemInterface;
+    //use Symfony\Contracts\Cache\CacheItemInterface;
+    use Psr\Cache\CacheItemInterface;
 
     class TiendaFloresController extends AbstractController {
         #[Route('/', name: 'app_homepageTiendaFlores')]
@@ -23,11 +24,10 @@
                 'plantas' => $plantas,
             ]);
         }
-        /*He probado a configurar la caché para esta ruta pero no me funciona, tiene almancenada en chaché la consulta de la unidad anterior en la que hice 
-        el ejemplo de los apuntes de Sabela y no consigo que funcione*/
+        
         #[Route('/listarFlores/{slug}')]
         public function listarFlores(HttpClientInterface $httpClient, CacheInterface $cache, String $slug=null): Response{
-            $productos = $cache->get('productos_data', function(CacheItemInterface $cacheItem) use($httpClient){
+            $productos = $cache->get('products_data', function(CacheItemInterface $cacheItem) use($httpClient){
             $cacheItem->expiresAfter(10);
             $respuesta = $httpClient->request('GET','https://raw.githubusercontent.com/A19MariaCC/docker-lamp/main/www/ud08/symfony_projects/public/flores.json');
             return $respuesta->toArray();
