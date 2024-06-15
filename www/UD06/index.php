@@ -52,7 +52,7 @@ Flight::route('POST /clientes', function () {
 //DELETE: Dado un id se debe poder eliminar un cliente.
 Flight::route('DELETE /clientes/@id', function ($id) {
     //Debemos pasar el id en la ruta y a la función para poder obtener los datos a través del id
-
+    //$id = Flight::request()->data->id;
     $sql = "DELETE FROM clientes WHERE id=$id";
     $stmt = Flight::db()->prepare($sql);
     $stmt->bindParam(1, $id);

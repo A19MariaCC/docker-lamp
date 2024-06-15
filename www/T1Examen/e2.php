@@ -12,7 +12,7 @@
   <body>
     <div class="container">
         <?php
-            $alto = 4;
+            $alto = random_int(1,30);
             for ($i=1; $i<=$alto; $i++) { 
                 for ($j=0; $j<$i; $j++) {  
                     echo "<li>a</li>";  

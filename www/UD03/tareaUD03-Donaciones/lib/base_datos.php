@@ -77,7 +77,7 @@
             CONSTRAINT pk_donante PRIMARY KEY (idDonante, fechaDonacion),
             CONSTRAINT fk_donante FOREIGN KEY (idDonante) REFERENCES donantes(id) ON DELETE CASCADE
             )";
-          try{
+        try{
             $conPDO->exec($sql);
             echo "La tabla histórico fue creada correctamente<br />";
         }catch(PDOException $e){

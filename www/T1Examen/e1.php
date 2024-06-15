@@ -13,7 +13,7 @@ function isPar($pares){
     }
     return $resultado;
 }
-
+isPar(2, 7, 22, "verdadero");
 function isImpar($pares){
     $resultado = [];
     for($i=0; $i<count($pares); $i++){
