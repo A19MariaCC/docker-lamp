@@ -1,0 +1,59 @@
+https://fpadistancia.edu.xunta.gal/
+
+localhost:8000
+
+Me descargo los paquetes basicos y desde la unidad:
+
+
+apt install -y php php-cli php-xml
+curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
+php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+wget https://get.symfony.com/cli/installer -O - | bash
+mv /root/.symfony5/bin/symfony /usr/bin
+
+
+  
+  localhost:8000
+
+Desde el proyecto, cd symfony_proyect:
+
+composer require templates
+composer require debug
+composer require symfony/ux-twig-component
+composer require symfony/http-client
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController; 
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\Cache\CacheInterface;
+//use Symfony\Contracts\Cache\CacheItemInterface;
+use Psr\Cache\CacheItemInterface;
+
+
+
+
+
+*****************************************************************
+
+Paso 1: Configurar la sesión en Symfony
+Symfony ya viene configurado para manejar sesiones por defecto, pero es bueno asegurarse de que la configuración es la correcta. En el archivo config/packages/framework.yaml, asegúrate de tener algo como esto:
+
+yaml
+Copiar código
+framework:
+    session:
+        handler_id: null
+        cookie_secure: auto
+
+
+***********************
+
+Crear 
+
+php bin/console make:controller ProductController
+
+************************
+
+
+symfony server:start, si lo queréis consultar está en la página entrypoint.sh

@@ -67,8 +67,15 @@ function get_usuario($conexion, $id)
     return $resultado;
 }
 
-function editar_usuario($conexion, $id, $nombre, $apellidos, $edad, $provincia)
+function editar_usuario($conexion, $usuario)
 {
+    $id = $usuario->getID();
+    $nombre = $usuario->getNombre();
+    $apellidos = $usuario->getApellidos();
+    $edad = $usuario->getEdad();
+    $provincia = $usuario->getProvincia();
+    $password = $usuario->getPassword();
+
     $sql = "UPDATE usuarios
             SET nombre='$nombre' ,apellidos='$apellidos' ,edad='$edad',provincia='$provincia'
             WHERE id=$id;";
@@ -78,11 +85,16 @@ function editar_usuario($conexion, $id, $nombre, $apellidos, $edad, $provincia)
 }
 
 
-function dar_alta_usuario($conexion, $nombre, $password, $apellidos, $edad, $provincia)
-{
-    $hasheado = password_hash($password,PASSWORD_DEFAULT);
-    $sql = $conexion->prepare("INSERT INTO usuarios (nombre,pass,apellidos,edad,provincia) VALUES (?,?,?,?,?)");
-    $sql->bind_param("sssss", $nombre, $hasheado, $apellidos, $edad, $provincia);
+function dar_alta_usuario($conexion, $usuario){
+    $nombre = $usuario->getNombre();
+    $apellidos = $usuario->getApellidos();
+    $edad = $usuario->getEdad();
+    $provincia = $usuario->getProvincia();
+    $password = $usuario->getPassword();
+
+    $hasheado = password_hash($password, PASSWORD_DEFAULT);
+    $sql = $conexion->prepare("INSERT INTO usuarios (nombre,apellidos,pass,edad,provincia) VALUES (?,?,?,?,?)");
+    $sql->bind_param("sssss", $nombre, $apellidos, $hasheado, $edad, $provincia);
     return $sql->execute() or die($conexion->error);
 }
 

@@ -25,6 +25,4 @@ echo $contactoAlberto -> get_apellido(). "<br>\n";
 echo $contactoAlberto -> get_NumTelefono() . "<br>\n";
 $contactoAlberto-> muestraInformacion();
 
-
-
 ?>

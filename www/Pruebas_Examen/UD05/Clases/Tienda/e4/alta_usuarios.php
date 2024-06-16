@@ -2,6 +2,7 @@
 
   require "lib/base_datos.php";
   require "lib/utilidades.php";
+  require "class/Usuario.php";
 
 ?>
 <!doctype html>
@@ -23,23 +24,28 @@
 $mensajes = array();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
-    if (empty($_POST["name"]) || empty($_POST["apellidos"]) || empty($_POST["edad"]) || empty($_POST["password"])) {
-        $mensajes[] =  array("error", "Falta algún dato obligatorio del formulario");
-    } else {
-        $nombre = test_input($_POST["name"]);
-        $password = test_input($_POST["password"]);
-        $apellidos = test_input($_POST["apellidos"]);
-        $edad = test_input($_POST["edad"]);
-        $provincia = test_input($_POST["provincia"]);
+    $usuario = new Usuario(
+        0,
+        $_POST["name"],
+        $_POST["apellidos"],
+        $_POST["edad"],
+        $_POST["provincia"],
+        $_POST["password"]
+    );
 
+    if(($usuario->isEmpty())){
+        $mensajes[] = array("error", "Falta algún dato obligatorio del formulario.");
+    }else{
+        $usuario->limpiarAtributos();
         $conexion = get_conexion();
         seleccionar_bd_tienda($conexion);
-        //Cuarto error, falta un argumento en la llamada a la función, la conexion
-        dar_alta_usuario($conexion,$nombre, $password, $apellidos, $edad, $provincia);
-        $mensajes[] = array("success", "Usuario dado de alta correctamente");
+        dar_alta_usuario($conexion, $usuario);
+        $mensajes[] = array("success","Usuario dado de alta correctamente");
         cerrar_conexion($conexion);
     }
-}
+
+} 
+
 ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
