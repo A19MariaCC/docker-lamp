@@ -20,4 +20,10 @@ function contarVocales($texto){
     
 }
 
+function obtenerVocales($texto){
+    return explode(" ",$texto);
+
+
+}
+
 ?>

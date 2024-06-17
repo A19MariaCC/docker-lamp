@@ -6,4 +6,6 @@ $stringCualquiera = ["Esto es un string cualquiera"];
 
 echo contarVocales(implode($stringCualquiera));
 
+//echo obtenerVocales($stringCualquiera);
+
 ?>
