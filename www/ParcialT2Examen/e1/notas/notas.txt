@@ -1,0 +1,2 @@
+Titulo primera nota;Contenido de la primera nota
+Titulo segunda nota;Contenido de la segunda nota

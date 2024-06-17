@@ -1,5 +1,5 @@
 <?php
-$universidad = array(
+/*$universidad = array(
     "Facultad de Ciencias" => array(
     "Departamento de Física" => array(
     "Profesores" => array(
@@ -45,18 +45,16 @@ $universidad = array(
     )
     )
     );
+    */
 
-    echo "<ul>";
-    foreach($universidad as $clave=>$valor){
-        echo "<h4>".$clave."</h4>";
-       }
-    
-
-    /*imprimirProfesores($universidades){
+    function imprimirProfesores($universidad){
+        echo "<ul>";
+        foreach($universidad as $clave=>$valor){
+            echo "<h4>".$clave."</h4>";
+           }
         
-        
-    }*/
-
+    }
+  
 
 ?>
 
